@@ -15,9 +15,9 @@ function login()
     const pass = document.getElementById('pass').value;
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+    xhr.open('GET', 'http://localhost:3001/', true);
     xhr.onload = function() {
-        console.log("hello!");
+        //console.log("hello!");
         if(this.status === 200)
         {
             const response = this.responseText;
