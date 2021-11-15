@@ -1,10 +1,17 @@
 import React from "react";
+import Sidebar from "./Sidebar.js";
+import Topbar from "./Topbar.js";
+import "./styles/dashboard.css";
 
 function Dashboard(){
     return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
+    <div >
+    <Topbar/>
+    <div className = "container">
+    <Sidebar/>
+    <div className="others">other pages</div>
+    </div>
+    </div>
     );
 }
 

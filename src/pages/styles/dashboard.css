@@ -1,0 +1,8 @@
+.container {
+    display:inline-flex;
+    margin-left: 0px;
+  }
+  .others {
+    flex: 4;
+  }
+  
