@@ -39,3 +39,12 @@
     font-size: 20px !important;
   }
   
+  #sidebarBtnO{
+    background-color: rgb(234, 244, 247);
+    border: none;
+  }
+
+  #sidebarBtnF{
+    background-color: rgb(234, 244, 247);
+    border: none;
+  }
