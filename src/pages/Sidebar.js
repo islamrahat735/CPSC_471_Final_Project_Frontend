@@ -19,14 +19,18 @@ export default function Sidebar(props) {
        Fees Details
         </li>
         </button>
+        <button onClick = {props.visibleHandleAttendance} id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
         Attendance
         </li>
+        </button>
+        <button onClick = {props.visibleHandleUpdate} id = "sideBarBtnU">
         <li className="sidebarListItem">
         <Cached className="sidebarIcon"/>
         Updates
         </li>
+        </button>
         <li className="sidebarListItem">
         <PhotoCamera className="sidebarIcon"/>
         Gallery
