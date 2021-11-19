@@ -19,7 +19,6 @@ export class Dashboard extends Component{
         this.visibleAttendance = this.visibleAttendance.bind(this);
         this.visibleUpdate = this.visibleUpdate.bind(this);
     }
-
     visibleOverview() 
     {
         this.setState({type: 'Overview'});
