@@ -5,14 +5,15 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import NavbarComp from './pages/NavbarComp';
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-
+import ChooseProfile from './pages/ChooseProfile';
 
 function App() {
 
   return (
+    
     <Router>
       <NavbarComp />
-   <Switch>
+      <Switch>
      <Route path = "/" exact>
        <Home />
      </Route>
@@ -25,8 +26,12 @@ function App() {
         <Dashboard />
       </Route>
 
-   </Switch>
+       <Route path = "/ChooseProfile" exact>
+           <ChooseProfile />
+       </Route>
 
+
+   </Switch>
    </Router>
   );
 }

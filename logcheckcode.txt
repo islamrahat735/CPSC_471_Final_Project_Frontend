@@ -1,0 +1,31 @@
+loginCheck() {
+    const name = document.getElementById('user').value;
+    const pass = document.getElementById('pass').value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:3001/', true);
+    xhr.onload = function() {
+        //console.log("hello!");
+        if(this.status === 200)
+        {
+            const response = this.responseText;
+            console.log(response);
+            
+        }
+    }
+    xhr.send();
+
+    {Clients.map(client => {
+        console.log(this.state.status);
+        if(client.email === name && client.password === pass)
+        {
+            this.setState({status: 'true'});
+            console.log("Worked!");
+        }
+
+    })}
+    if(this.state.status === "")
+    {
+        alert("You have entered an invalid email or password");
+    }
+    }
