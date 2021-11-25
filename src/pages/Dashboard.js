@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import Sidebar from "./Sidebar.js";
 import Topbar from "./Topbar.js";
 import "./styles/dashboard.css";
@@ -6,73 +6,44 @@ import Overview from "./Overview.js";
 import Fees from "./Fees.js";
 import Attendance from "./Attendance.js";
 import Updates from "./Updates.js";
-export class Dashboard extends Component{
-    constructor(props) {
-        super(props)
+import { useDispatch, useSelector } from 'react-redux';
 
-        this.state = {
-            type: ''
-        };
-
-        this.visibleOverview = this.visibleOverview.bind(this);
-        this.visibleFees = this.visibleFees.bind(this);
-        this.visibleAttendance = this.visibleAttendance.bind(this);
-        this.visibleUpdate = this.visibleUpdate.bind(this);
-    }
-    visibleOverview() 
+export default function Dashboard() {
+    const username = useSelector((state) => state.username);
+    console.log(username);
+    const [page,setPage] = useState('');
+    let output = 'Testing';
+    function visibleOverview() 
     {
-        this.setState({type: 'Overview'});
-    }
-
-    visibleFees() 
-    {
-        this.setState({type: 'Fees'}); 
-    }
-
-    visibleAttendance()
-    {
-        this.setState({type: 'Attendance'}); 
-    }
-
-    visibleUpdate()
-    {
-        this.setState({type: 'Updates'});
-    }
-
-    render() {
-    let output = '';
-    if(this.state.type === "Overview")
-    {
+        console.log("Here")
+        setPage({page: 'Overview'});
+        console.log(page);
         output = <Overview />
-        this.state.type = '';
     }
-    if(this.state.type === "Fees")
+
+    function visibleFees() 
     {
-        output = <Fees />
-        this.state.type = '';
+        this.setPage({page: 'Fees'}); 
     }
-    if(this.state.type === "Attendance")
+
+    function visibleAttendance()
     {
-        output = <Attendance />
-        this.state.type = '';
+        this.setPage({page: 'Attendance'}); 
     }
-    if(this.state.type === "Updates")
+
+    function visibleUpdate()
     {
-        output = <Updates />
-        this.state.type = '';
+        this.setPage({page: 'Updates'});
     }
     return (
     <div >
     <Topbar/>
     <div className = "container">
-    <Sidebar visibleHandleOver = {this.visibleOverview} visibleHandleFee = {this.visibleFees} visibleHandleAttendance = {this.visibleAttendance} visibleHandleUpdate = {this.visibleUpdate}/>
-    
-    <div className="others">{output}</div>
+    <Sidebar visibleHandleOver = {visibleOverview}/>
+    <div className = "others">
+        <Overview />
+    </div>
     </div>
     </div>
     )
-    }
 }
-
-
-export default Dashboard;

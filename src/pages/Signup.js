@@ -4,13 +4,28 @@ import Clients from "../clients.json"
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Dashboard from './Dashboard';
 import { useHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import {usernameAC} from "../state/index"
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Signup() {
     const history = useHistory();
-
+    var enteredUserName = '';
+    var enteredPassword = '';
+    const dispatch = useDispatch();
+    const {saveUsername} = bindActionCreators(usernameAC, dispatch);
+    const name = useSelector((state) => state.username)
+    console.log(name);
+    function getName(val)
+    {
+        enteredUserName = val.target.value;
+        console.log(enteredUserName);
+    }
     function checkLogin()
     {
-        history.push("/Dashboard");
+        saveUsername(enteredUserName);
+        console.log(name)
+        history.push("/Dashboard")
     }
     return (
         <div>
@@ -44,7 +59,7 @@ export default function Signup() {
    <form> {/**THIS IS FOR THE INPUTS OF USERNAME/EMAIL AND PASSWORD */}
        <div className = "Inputmail">
        <label style = {{fontFamily: 'Roboto', fontSize:26}}>Email</label>
-       <input type = "email" className = "form-control" placeholder= "Enter Email" style = {{width:400, height:50, fontSize:22}} id = "user"></input>
+       <input type = "email" className = "form-control" placeholder= "Enter Email" style = {{width:400, height:50, fontSize:22}} onChange= {getName} id = "user"></input>
        </div>
 
        <div className = "Inputpass">
@@ -57,7 +72,9 @@ export default function Signup() {
        <small style = {{marginLeft:300}}><a href = "">Forgot password?</a></small>
        <small style = {{marginLeft:40}}>Want to register your child? <a href = "">Click Here</a></small>
    </form>
-    
+    <div>
+        {name}
+    </div>
 
     
   </div>  {/**THIS IS END OF SECOND COL */}

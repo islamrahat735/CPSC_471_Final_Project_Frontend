@@ -13,19 +13,19 @@ export default function Sidebar(props) {
        Overview
         </li>
         </button>
-        <button onClick = {props.visibleHandleFee} id = "sidebarBtnF">
+        <button id = "sidebarBtnF">
         <li className="sidebarListItem">
         <ControlPoint className="sidebarIcon"/>
        Fees Details
         </li>
         </button>
-        <button onClick = {props.visibleHandleAttendance} id = "sideBarBtnA">
+        <button id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
         Attendance
         </li>
         </button>
-        <button onClick = {props.visibleHandleUpdate} id = "sideBarBtnU">
+        <button id = "sideBarBtnU">
         <li className="sidebarListItem">
         <Cached className="sidebarIcon"/>
         Updates
