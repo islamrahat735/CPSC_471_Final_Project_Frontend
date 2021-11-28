@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "Allergies": "None",
+      "Health Conditions": "None",
+      "Vaccines": "Covid+"
+    },
+    {
+        "id": 2,
+        "Allergies": "None",
+        "Health Conditions": "None",
+        "Vaccines": "Covid+"
+    },
+    {
+        "id": 3,
+        "Allergies": "None",
+        "Health Conditions": "None",
+        "Vaccines": "Covid+"
+    },
+    {
+        "id": 4,
+        "Allergies": "None",
+        "Health Conditions": "None",
+        "Vaccines": "Covid+"
+    },
+    {
+        "id": 5,
+        "Allergies": "None",
+        "Health Conditions": "None",
+        "Vaccines": "Covid+"
+    }
+  ]
