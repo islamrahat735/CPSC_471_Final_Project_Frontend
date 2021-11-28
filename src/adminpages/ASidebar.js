@@ -7,34 +7,42 @@ export default function Sidebar(props) {
         <div className="sidebarMenu">
        <h3 className="sidebarTitle">Dashboard</h3>
         <ul className="sidebarList">
-        <button onClick = {props.visibleHandleOver} id = "sidebarBtnO">
+        <button onClick = {props.Parentlisthandler} id = "sidebarBtnO">
         <li className="sidebarListItem">
         <ViewList className="sidebarIcon"/>
-       Overview
+       Parent List
         </li>
         </button>
-        <button onClick = {props.visibleHandleFees} id = "sidebarBtnF">
+        <button onClick = {props.Studentlisthandler} id = "sidebarBtnF">
         <li className="sidebarListItem">
         <ControlPoint className="sidebarIcon"/>
-       Fees Details
+       Student List
         </li>
         </button>
-        <button onClick = {props.visibleHandleAttendance} id = "sideBarBtnA">
+        <button onClick = {props.Programlisthandler} id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
-        Attendance
+        Programs
         </li>
         </button>
-        <button onClick = {props.visibleHandleUpdate} id = "sideBarBtnU">
+        <button onClick = {props.Fieldtriphandler} id = "sideBarBtnU">
         <li className="sidebarListItem">
         <Cached className="sidebarIcon"/>
-        Updates
+        Field Trips
         </li>
         </button>
+        <button onClick = {props.AccountsHandler} id = "sideBarBtnU">
         <li className="sidebarListItem">
-        <PhotoCamera className="sidebarIcon"/>
-        Gallery
+        <Cached className="sidebarIcon"/>
+        Accounts
         </li>
+        </button>
+        <button onClick = {props.Employeelisthandler} id = "sidebarBtnO">
+        <li className="sidebarListItem">
+        <ViewList className="sidebarIcon"/>
+       Employees
+        </li>
+        </button>
         </ul>
        
        </div>
