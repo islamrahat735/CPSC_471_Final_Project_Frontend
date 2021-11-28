@@ -1,4 +1,4 @@
-import "./styles/sidebar.css"
+import "./Astyles/Asidebar.css"
 import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera } from "@material-ui/icons"
 export default function Sidebar(props) {
     return (

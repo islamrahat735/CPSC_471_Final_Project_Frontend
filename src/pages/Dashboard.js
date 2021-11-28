@@ -11,37 +11,54 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Dashboard() {
     const username = useSelector((state) => state.username);
     console.log(username);
-    const [page,setPage] = useState('');
+    const [isToggleOver,setIsToggleOver] = useState(false);
+    const [isToggleFees,setIsToggleFees] = useState(false);
+    const [isToggleAttendance,setIsToggleAttendance] = useState(false);
+    const [isToggleUpdates,setIsToggleUpdates] = useState(false);
     let output = 'Testing';
     function visibleOverview() 
     {
-        console.log("Here")
-        setPage({page: 'Overview'});
-        console.log(page);
-        output = <Overview />
+        setIsToggleUpdates(false);
+        setIsToggleAttendance(false);
+        setIsToggleFees(false);
+        setIsToggleOver(true);
+ 
     }
 
     function visibleFees() 
     {
-        this.setPage({page: 'Fees'}); 
+      setIsToggleUpdates(false);
+      setIsToggleAttendance(false);
+      setIsToggleOver(false);
+      setIsToggleFees(true);
+
     }
 
     function visibleAttendance()
     {
-        this.setPage({page: 'Attendance'}); 
+        setIsToggleUpdates(false);
+        setIsToggleOver(false);
+        setIsToggleFees(false);
+        setIsToggleAttendance(true);
     }
 
     function visibleUpdate()
     {
-        this.setPage({page: 'Updates'});
+        setIsToggleOver(false);
+        setIsToggleFees(false);
+        setIsToggleAttendance(false);
+        setIsToggleUpdates(true);
     }
     return (
     <div >
     <Topbar/>
     <div className = "container">
-    <Sidebar visibleHandleOver = {visibleOverview}/>
+    <Sidebar visibleHandleOver = {visibleOverview} visibleHandleFees = {visibleFees} visibleHandleAttendance = {visibleAttendance} visibleHandleUpdate = {visibleUpdate}/>
     <div className = "others">
-        <Overview />
+        {isToggleOver && <Overview />}
+        {isToggleFees && <Fees />}
+        {isToggleAttendance && <Attendance />}
+        {isToggleUpdates && <Updates />}
     </div>
     </div>
     </div>
