@@ -6,7 +6,6 @@ import Signup from './pages/Signup';
 import NavbarComp from './pages/NavbarComp';
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
-
 function App() {
 
   return (
