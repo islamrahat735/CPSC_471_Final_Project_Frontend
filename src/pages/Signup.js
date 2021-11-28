@@ -1,49 +1,36 @@
-import React from "react";
-import './styles/Signup.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Clients from "../clients.json";
+import React from 'react'
+import "./styles/Signup.css";
+import Clients from "../clients.json"
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import Dashboard from './Dashboard';
+import { useHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+import {usernameAC} from "../state/index"
+import { useDispatch, useSelector } from 'react-redux';
 
-function Signup()
-{
-
-
-
-function login()
-{
-    let state = "false";
-    const name = document.getElementById('user').value;
-    const pass = document.getElementById('pass').value;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:3001/', true);
-    xhr.onload = function() {
-        //console.log("hello!");
-        if(this.status === 200)
-        {
-            const response = this.responseText;
-            console.log(response);
-            
-        }
-    }
-    xhr.send();
-
-    {Clients.map(client => {
-
-        if(client.email === name && client.password === pass)
-        {
-            state = "true";
-            console.log("Worked!");
-        }
-    })}
-    if(state === "false")
+export default function Signup() {
+    const history = useHistory();
+    var enteredUserName = '';
+    var enteredPassword = '';
+    const dispatch = useDispatch();
+    const {saveUsername} = bindActionCreators(usernameAC, dispatch);
+    const name = useSelector((state) => state.username)
+    console.log(name);
+    function getName(val)
     {
-        alert("You have entered an invalid email or password");
+        enteredUserName = val.target.value;
+        console.log(enteredUserName);
     }
-}
-
-
-return (
-    <div className = "scroll">
+    function checkLogin()
+    {
+        saveUsername(enteredUserName);
+        console.log(name)
+        history.push("/Dashboard")
+    }
+    return (
+        <div>
+            <div>
+             <div className = "scroll">
 <div className="row">
   <div className="column" style={{backgroundColor:"#639FE4"}}>  {/**THIS IS LEFT SIDE OF PAGE */}
       <div className = "title">
@@ -72,29 +59,28 @@ return (
    <form> {/**THIS IS FOR THE INPUTS OF USERNAME/EMAIL AND PASSWORD */}
        <div className = "Inputmail">
        <label style = {{fontFamily: 'Roboto', fontSize:26}}>Email</label>
-       <input type = "email" className = "form-control" placeholder= "Enter Email" style = {{width:400, height:50, fontSize:22}} id = "user"></input>
+       <input type = "email" className = "form-control" placeholder= "Enter Email" style = {{width:400, height:50, fontSize:22}} onChange= {getName} id = "user"></input>
        </div>
 
        <div className = "Inputpass">
        <label style = {{fontFamily: 'Roboto', fontSize:26}}>Password</label>
        <input type = "password" className = "form-control" placeholder= "Enter password" style = {{width:400, height:50, fontSize:22}} id = "pass"></input>
        </div>
-       <button type="button" class="btn btn-primary btn-lg btn-block" style = {{width:400, height:50, fontSize:22, marginLeft:300, marginTop:32, fontFamily: 'Roboto', backgroundColor:'#639FE4'}} onClick = {login}>Login</button>
+       <button type="button" class="btn btn-primary btn-lg btn-block" style = {{width:400, height:50, fontSize:22, marginLeft:300, marginTop:32, fontFamily: 'Roboto', backgroundColor:'#639FE4'}} onClick = {checkLogin}>Login</button>
         <br></br>
         <br></br>
        <small style = {{marginLeft:300}}><a href = "">Forgot password?</a></small>
        <small style = {{marginLeft:40}}>Want to register your child? <a href = "">Click Here</a></small>
    </form>
-    
+    <div>
+        {name}
+    </div>
 
     
   </div>  {/**THIS IS END OF SECOND COL */}
 </div>
     </div>
-)
-
+        </div>
+        </div>
+    )
 }
-
-
-
-export default Signup;

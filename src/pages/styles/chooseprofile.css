@@ -1,0 +1,12 @@
+.profilecard {
+    width: 18rem;
+    background-color: #92E3FF;
+    text-align: center;
+    height:170px;
+    margin-top: 20px;
+}
+
+.cardfromtop {
+    margin-top: 250px;
+    margin-left: 30vh;
+}

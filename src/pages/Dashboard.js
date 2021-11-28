@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import Sidebar from "./Sidebar.js";
 import Topbar from "./Topbar.js";
 import "./styles/dashboard.css";
@@ -6,74 +6,61 @@ import Overview from "./Overview.js";
 import Fees from "./Fees.js";
 import Attendance from "./Attendance.js";
 import Updates from "./Updates.js";
-export class Dashboard extends Component{
-    constructor(props) {
-        super(props)
+import { useDispatch, useSelector } from 'react-redux';
 
-        this.state = {
-            type: ''
-        };
-
-        this.visibleOverview = this.visibleOverview.bind(this);
-        this.visibleFees = this.visibleFees.bind(this);
-        this.visibleAttendance = this.visibleAttendance.bind(this);
-        this.visibleUpdate = this.visibleUpdate.bind(this);
-    }
-
-    visibleOverview() 
+export default function Dashboard() {
+    const username = useSelector((state) => state.username);
+    console.log(username);
+    const [isToggleOver,setIsToggleOver] = useState(false);
+    const [isToggleFees,setIsToggleFees] = useState(false);
+    const [isToggleAttendance,setIsToggleAttendance] = useState(false);
+    const [isToggleUpdates,setIsToggleUpdates] = useState(false);
+    let output = 'Testing';
+    function visibleOverview() 
     {
-        this.setState({type: 'Overview'});
-    }
-
-    visibleFees() 
-    {
-        this.setState({type: 'Fees'}); 
+        setIsToggleUpdates(false);
+        setIsToggleAttendance(false);
+        setIsToggleFees(false);
+        setIsToggleOver(true);
+ 
     }
 
-    visibleAttendance()
+    function visibleFees() 
     {
-        this.setState({type: 'Attendance'}); 
+      setIsToggleUpdates(false);
+      setIsToggleAttendance(false);
+      setIsToggleOver(false);
+      setIsToggleFees(true);
+
     }
 
-    visibleUpdate()
+    function visibleAttendance()
     {
-        this.setState({type: 'Updates'});
+        setIsToggleUpdates(false);
+        setIsToggleOver(false);
+        setIsToggleFees(false);
+        setIsToggleAttendance(true);
     }
 
-    render() {
-    let output = '';
-    if(this.state.type === "Overview")
+    function visibleUpdate()
     {
-        output = <Overview />
-        this.state.type = '';
-    }
-    if(this.state.type === "Fees")
-    {
-        output = <Fees />
-        this.state.type = '';
-    }
-    if(this.state.type === "Attendance")
-    {
-        output = <Attendance />
-        this.state.type = '';
-    }
-    if(this.state.type === "Updates")
-    {
-        output = <Updates />
-        this.state.type = '';
+        setIsToggleOver(false);
+        setIsToggleFees(false);
+        setIsToggleAttendance(false);
+        setIsToggleUpdates(true);
     }
     return (
     <div >
     <Topbar/>
     <div className = "container">
-    <Sidebar visibleHandleOver = {this.visibleOverview} visibleHandleFee = {this.visibleFees} visibleHandleAttendance = {this.visibleAttendance} visibleHandleUpdate = {this.visibleUpdate}/>
-    
-    <div className="others">{output}</div>
+    <Sidebar visibleHandleOver = {visibleOverview} visibleHandleFees = {visibleFees} visibleHandleAttendance = {visibleAttendance} visibleHandleUpdate = {visibleUpdate}/>
+    <div className = "others">
+        {isToggleOver && <Overview />}
+        {isToggleFees && <Fees />}
+        {isToggleAttendance && <Attendance />}
+        {isToggleUpdates && <Updates />}
+    </div>
     </div>
     </div>
     )
-    }
 }
-
-
-export default Dashboard;
