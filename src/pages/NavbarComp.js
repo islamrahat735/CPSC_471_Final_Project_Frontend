@@ -9,7 +9,7 @@ function NavbarComp() {
     <Navbar.Brand href="/">Happy Trails Daycare</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
-      <Nav.Link href="/Signup">Signup</Nav.Link>
+      <Nav.Link href="/Login">Login</Nav.Link>
     </Nav>
     </Container>
   </Navbar>

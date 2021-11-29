@@ -7,7 +7,12 @@ import NavbarComp from './pages/NavbarComp';
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import ChooseProfile from './pages/ChooseProfile';
 import AdminDashboard from './adminpages/AdminDashboard';
-
+import ParentEnroll from './adminpages/ParentEnroll';
+import ChildEnroll from './adminpages/ChildEnroll';
+import ProgramCreation from './adminpages/ProgramCreation';
+import TeacherDashboard from './teacherpages/TeacherDashboard';
+import FieldTripCreator from './adminpages/FieldTripCreator'
+import EmployeeEnroll from './adminpages/EmployeeEnroll';
 function App() {
 
   return (
@@ -19,7 +24,7 @@ function App() {
        <Home />
      </Route>
 
-      <Route path = "/Signup" exact>
+      <Route path = "/Login" exact>
         <Signup />
       </Route>
 
@@ -35,6 +40,30 @@ function App() {
         <AdminDashboard />
       </Route>
 
+      <Route path = "/Admin/ParentEnroll" exact>
+        <ParentEnroll />
+      </Route>
+
+      <Route path = "/Admin/ChildEnroll" exact>
+        <ChildEnroll />
+      </Route>
+
+      <Route path = "/Admin/ProgramCreation" exact>
+        <ProgramCreation />
+      </Route>
+
+      <Route path = "/TeacherDashboard" exact>
+        <TeacherDashboard />
+      </Route>
+
+      <Route path = "/Admin/FieldTripAdd" exact>
+        <FieldTripCreator />
+      </Route>
+
+      <Route path = "/Admin/EmployeeAdd" exact>
+        <EmployeeEnroll />
+      </Route>
+  
    </Switch>
    </Router>
   );
