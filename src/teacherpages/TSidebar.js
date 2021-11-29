@@ -1,4 +1,4 @@
-import './Tsyles/Tsidebar.css'
+import './Tstyles/Tsidebar.css'
 import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera } from "@material-ui/icons"
 export default function TSidebar(props) {
     return (
