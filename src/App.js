@@ -11,6 +11,8 @@ import ParentEnroll from './adminpages/ParentEnroll';
 import ChildEnroll from './adminpages/ChildEnroll';
 import ProgramCreation from './adminpages/ProgramCreation';
 import TeacherDashboard from './teacherpages/TeacherDashboard';
+import FieldTripCreator from './adminpages/FieldTripCreator'
+import EmployeeEnroll from './adminpages/EmployeeEnroll';
 function App() {
 
   return (
@@ -22,7 +24,7 @@ function App() {
        <Home />
      </Route>
 
-      <Route path = "/Signup" exact>
+      <Route path = "/Login" exact>
         <Signup />
       </Route>
 
@@ -54,6 +56,13 @@ function App() {
         <TeacherDashboard />
       </Route>
 
+      <Route path = "/Admin/FieldTripAdd" exact>
+        <FieldTripCreator />
+      </Route>
+
+      <Route path = "/Admin/EmployeeAdd" exact>
+        <EmployeeEnroll />
+      </Route>
   
    </Switch>
    </Router>

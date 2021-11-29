@@ -73,7 +73,6 @@ export default function Signup() {
        <small style = {{marginLeft:40}}>Want to register your child? <a href = "">Click Here</a></small>
    </form>
     <div>
-        {name}
     </div>
 
     
