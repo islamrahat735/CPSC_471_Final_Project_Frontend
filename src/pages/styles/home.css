@@ -1,0 +1,13 @@
+.content {
+  background: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80")
+    center center/cover no-repeat;
+  /* alternate url: https://raw.githubusercontent.com/briancodex/react-website-v1/starter/public/images/img-home.jpg */
+  padding: 12px;
+  height: 600px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
+}
