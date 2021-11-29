@@ -1,0 +1,14 @@
+.ChildForm {
+    margin-left: 50px;
+    margin-right: 100px;
+    align-items: center;
+    margin-top: 100px;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+}
+
+.ChildHeading {
+    padding-top: 50px;
+    text-align: center;
+}

@@ -10,6 +10,7 @@ import AdminDashboard from './adminpages/AdminDashboard';
 import ParentEnroll from './adminpages/ParentEnroll';
 import ChildEnroll from './adminpages/ChildEnroll';
 import ProgramCreation from './adminpages/ProgramCreation';
+import TeacherDashboard from './teacherpages/TeacherDashboard';
 function App() {
 
   return (
@@ -47,6 +48,10 @@ function App() {
 
       <Route path = "/Admin/ProgramCreation" exact>
         <ProgramCreation />
+      </Route>
+
+      <Route path = "/TeacherDashboard" exact>
+        <TeacherDashboard />
       </Route>
    </Switch>
    </Router>
