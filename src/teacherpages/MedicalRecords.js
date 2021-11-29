@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function StudentList() {
+export default function MedicalRecords() {
     return (
         <div>
-            Student List
+            Medical Records
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Programs() {
+export default function Overview() {
     return (
         <div>
-            Programs
+            Overview
         </div>
     )
 }

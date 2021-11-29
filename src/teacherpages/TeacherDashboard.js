@@ -1,104 +1,61 @@
 import React from 'react'
-import ASidebar from "./TSidebar"
-import ATopbar from "./ATopbar"
 import { useState } from 'react';
-import ParentList from './ParentList';
-import StudentList from './StudentList';
-import Programs from './Programs';
+import TSidebar from './TSidebar';
+import TTopbar from './TTopbar';
+import Overview from './Overview';
+import MedicalRecords from './MedicalRecords';
 import FieldTrip from './FieldTrip';
-import EmployeeList from './EmployeeList';
-import Accounts from './Accounts';
-export default function AdminDashboard() {
-    const [isToggledParent, setisToggleParent] = useState(false);
-    const [isToggledStudent, setisToggleStudent] = useState(false);
-    const [isToggledPrograms, setisTogglePrograms] = useState(false);
+import CourseList from './CourseList';
+
+export default function TeacherDashboard() {
+    const [isToggledOverview, setisToggleOverview] = useState(false);
+    const [isToggledCourseList, setisToggleCourseList] = useState(false);
+    const [isToggledMedRecord, setisToggleMedRecord] = useState(false);
     const [isToggledFieldTrips, setisToggleFieldTrips] = useState(false);
-    const [isToggledEmployees, setisToggleEmployees] = useState(false);
-    const [isToggledAccounts, setisToggleAccounts] = useState(false);
 
     function visibleOverviewList()
     {
-        setisToggleAccounts(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(false);
-        setisToggleEmployees(false);
+        setisToggleCourseList(false);
+        setisToggleMedRecord(false);
         setisToggleFieldTrips(false);
-        setisToggleParent(true);
+        setisToggleOverview(true);
     }
     
-    function visibleParentList()
+    function visibleCourseList()
     {
-        setisToggleAccounts(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(false);
-        setisToggleEmployees(false);
+        setisToggleMedRecord(false);
         setisToggleFieldTrips(false);
-        setisToggleParent(true);
+        setisToggleOverview(false);
+        setisToggleCourseList(true);
     }
 
-    function visibleStudentList()
+    function visibleMedRecord()
     {
-        setisToggleAccounts(false);
-        setisTogglePrograms(false);
-        setisToggleEmployees(false);
         setisToggleFieldTrips(false);
-        setisToggleParent(false);
-        setisToggleStudent(true);
-    }
-
-    function visiblePrograms()
-    {
-        setisToggleAccounts(false);
-        setisToggleEmployees(false);
-        setisToggleFieldTrips(false);
-        setisToggleParent(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(true);
+        setisToggleOverview(false);
+        setisToggleCourseList(false);
+        setisToggleMedRecord(true);
     }
 
     function visibleFieldTrips()
     {
-        setisToggleAccounts(false);
-        setisToggleEmployees(false);
-        setisToggleParent(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(false);
+        setisToggleOverview(false);
+        setisToggleCourseList(false);
+        setisToggleMedRecord(false);
         setisToggleFieldTrips(true);
     }
 
-    function visibleEmployees()
-    {
-        setisToggleAccounts(false);
-        setisToggleParent(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(false);
-        setisToggleFieldTrips(false);
-        setisToggleEmployees(true);
-    }
-
-    function visiibleAccounts()
-    {
-        setisToggleParent(false);
-        setisToggleStudent(false);
-        setisTogglePrograms(false);
-        setisToggleFieldTrips(false);
-        setisToggleEmployees(false);
-        setisToggleAccounts(true);
-    }
 
     return (
     <div >
-    <ATopbar/>
+    <TTopbar/>
     <div className = "container">
-    <ASidebar Overviewlisthandler = {visibleOverviewList}   Parentlisthandler = {visibleParentList} Studentlisthandler = {visibleStudentList} Programlisthandler = {visiblePrograms} Fieldtriphandler = {visibleFieldTrips}
-    Employeelisthandler = {visibleEmployees} AccountsHandler = {visiibleAccounts}/>
+    <TSidebar overviewHandle = {visibleOverviewList} courseListHandle = {visibleCourseList} MedRecHandle = {visibleMedRecord} FieldTripHandle = {visibleFieldTrips}/>
     <div className = "others">
-        {isToggledParent && <ParentList />}
-        {isToggledStudent && <StudentList />}
-        {isToggledPrograms && <Programs />}
+        {isToggledOverview && <Overview />}
+        {isToggledCourseList && <CourseList />}
+        {isToggledMedRecord && <MedicalRecords />}
         {isToggledFieldTrips && <FieldTrip />}
-        {isToggledEmployees && <EmployeeList />}
-        {isToggledAccounts && <Accounts />}
     </div>
     </div>
     </div>

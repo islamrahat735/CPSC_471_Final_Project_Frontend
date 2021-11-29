@@ -53,6 +53,8 @@ function App() {
       <Route path = "/TeacherDashboard" exact>
         <TeacherDashboard />
       </Route>
+
+  
    </Switch>
    </Router>
   );

@@ -1,6 +1,6 @@
-import "./Astyles/Asidebar.css"
+import './Tsyles/Tsidebar.css'
 import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera } from "@material-ui/icons"
-export default function Sidebar(props) {
+export default function TSidebar(props) {
     return (
         <div className="sidebar">
         <div className="sidebarWrapper">
@@ -8,25 +8,25 @@ export default function Sidebar(props) {
        <h3 className="sidebarTitle">Dashboard</h3>
         <ul className="sidebarList">
         
-        <button onClick = {props.Programlisthandler} id = "sideBarBtnA">
+        <button onClick = {props.overviewHandle} id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
         Overview
         </li>
         </button>
-        <button onClick = {props.Parentlisthandler} id = "sidebarBtnO">
+        <button onClick = {props.courseListHandle} id = "sidebarBtnO">
         <li className="sidebarListItem">
         <ViewList className="sidebarIcon"/>
        Courses List
         </li>
         </button>
-        <button onClick = {props.Studentlisthandler} id = "sidebarBtnF">
+        <button onClick = {props.MedRecHandle} id = "sidebarBtnF">
         <li className="sidebarListItem">
         <ControlPoint className="sidebarIcon"/>
        Medical Records
         </li>
         </button>
-        <button onClick = {props.Programlisthandler} id = "sideBarBtnA">
+        <button onClick = {props.FieldTripHandle} id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
         Field Trips

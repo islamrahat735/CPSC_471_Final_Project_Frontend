@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Accounts() {
+export default function CourseList() {
     return (
         <div>
-            Accounts
+            Courses
         </div>
     )
 }
