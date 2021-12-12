@@ -13,6 +13,7 @@ import ProgramCreation from './adminpages/ProgramCreation';
 import TeacherDashboard from './teacherpages/TeacherDashboard';
 import FieldTripCreator from './adminpages/FieldTripCreator'
 import EmployeeEnroll from './adminpages/EmployeeEnroll';
+import FetchPrac from './fetchPrac';
 function App() {
 
   return (
@@ -62,6 +63,10 @@ function App() {
 
       <Route path = "/Admin/EmployeeAdd" exact>
         <EmployeeEnroll />
+      </Route>
+
+      <Route path = "/fetchprac" exact>
+        <FetchPrac />
       </Route>
   
    </Switch>
