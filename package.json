@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/style": "^0.8.0",
+    "@emotion/styled": "^11.6.0",
     "@fullcalendar/core": "^5.10.1",
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/list": "^5.10.1",

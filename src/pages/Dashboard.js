@@ -15,6 +15,8 @@ export default function Dashboard() {
     const [isToggleFees,setIsToggleFees] = useState(false);
     const [isToggleAttendance,setIsToggleAttendance] = useState(false);
     const [isToggleUpdates,setIsToggleUpdates] = useState(false);
+    const childID = useSelector((state) => state.childID);
+
     let output = 'Testing';
     function visibleOverview() 
     {
@@ -59,6 +61,7 @@ export default function Dashboard() {
         {isToggleFees && <Fees />}
         {isToggleAttendance && <Attendance />}
         {isToggleUpdates && <Updates />}
+        {childID}
     </div>
     </div>
     </div>

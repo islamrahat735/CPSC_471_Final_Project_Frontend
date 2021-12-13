@@ -1,7 +1,5 @@
 import React from 'react'
 import "./styles/Signup.css";
-import Clients from "../clients.json"
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Dashboard from './Dashboard';
 import { useHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
