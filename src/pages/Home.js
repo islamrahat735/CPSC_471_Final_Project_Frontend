@@ -6,17 +6,17 @@ import './styles/home.css'
 
 const useStyles=makeStyles((theme)=>({
 appbar:{
-    fontFamily:'Nunito',
+    fontFamily:'nunito',
 }
-
 
     ,root:{
     display:'flex',
     justifyContent:'center',
     alignItems:'center',
-    height:'95vh',
+    height:'115vh',
+    fontSize: 300,
    
-    backgroundImage:`url(${process.env.PUBLIC_URL+'/assests/pic.jpg'})`,
+    backgroundImage:`url(${process.env.PUBLIC_URL+'/assests/pic1.jpg'})`,
     backgroundRepeat:"no-repeat",
     backgroundSize: 'cover',
 },

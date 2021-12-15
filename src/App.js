@@ -13,7 +13,6 @@ import ProgramCreation from './adminpages/ProgramCreation';
 import TeacherDashboard from './teacherpages/TeacherDashboard';
 import FieldTripCreator from './adminpages/FieldTripCreator'
 import EmployeeEnroll from './adminpages/EmployeeEnroll';
-import Home from './pages/Home';
 import FetchPrac from './fetchPrac';
 function App() {
 
