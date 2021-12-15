@@ -1,58 +1,55 @@
-import { StylesContext } from '@material-ui/styles';
-import React from 'react';
-import * as ReactBootStrap from "react-bootstrap";
-
-      
-
-const Overview=()=>{
-    const Child=[
-      {Allergies:"Please include all allergies below", HealthConditions:"Please include all health conditions below", Vaccines:"Please include all past vaccinations"},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
-      {Allergies:"", HealthConditions:"", Vaccines:""},
+import { useEffect } from 'react';
+import {useSelector } from 'react-redux';
+import {useState} from 'react';
+import "./styles/Overview.css"
+import Card from 'react-bootstrap/Card'
 
 
-    ]
+export default function Overview()  
+{
+  const childID = useSelector((state) => state.childID);
+  const [child, setChild] = useState([]);
+
+  const [fees, setFees] = useState([]);
+
+  useEffect(() => {
+    fetchInfo();
+  }, [])
 
 
+  async function fetchInfo()
+  {
+    const response = await fetch(`http://localhost:3001/api/child/${childID}`);
+        const rep = await response.json();
+        console.log(rep);
+        setChild(rep);
 
-    const renderChild=(childs,index)=>{
-      return(
-        <tr key={index}> 
-        <td>{childs.Allergies}</td>
-        <td>{childs.HealthConditions}</td>
-        <td>{childs.Vaccines}</td>
-       
-        </tr>
-    
-      )
-    }
+    const feeresponse = await fetch(`http:/`)
+  }
+
   return (
-        <div className="Medical Record">
-        <ReactBootStrap.Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>Allergies</th>
-      <th>Health Conditions</th>
-      <th>Vaccines/Covid status</th>
-    </tr>
-  </thead>
-  <tbody>
-  {Child.map(renderChild)}
-      
-  </tbody>
-</ReactBootStrap.Table>
-        </div>
-    );
-
+    <div>
+      {child.map((child) =>
+      <div>
+        <Card className="text-center">
+          <Card.Header><h1>Overview</h1></Card.Header>
+          <Card.Body>
+            <Card.Text style = {{fontSize:30}}>
+             Child Name: {child.Fname} {child.Lname}
+            </Card.Text>
+            <Card.Text style = {{fontSize:30, paddingTop:75}}>
+             Program Name: {child.Prog_name}
+            </Card.Text>
+            <Card.Text style = {{fontSize:30, paddingTop:75}}>
+             Date of Birth: {child.Dob}
+            </Card.Text>
+            <Card.Text style = {{fontSize:30, paddingTop:75}}>
+             Status: {child.status}
+            </Card.Text>
+          </Card.Body>
+      </Card>   
+      </div>
+        )}
+    </div>
+  )
 }
-
-export default Overview;
