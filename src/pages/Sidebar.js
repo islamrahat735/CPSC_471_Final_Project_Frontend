@@ -1,5 +1,5 @@
 import "./styles/sidebar.css"
-import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera } from "@material-ui/icons"
+import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera, LocalHospital } from "@material-ui/icons"
 export default function Sidebar(props) {
     return (
         <div className="sidebar">
@@ -31,10 +31,12 @@ export default function Sidebar(props) {
         Updates
         </li>
         </button>
+        <button onClick = {props.visibleHandleMedical} id = "sideBarBtnMed">
         <li className="sidebarListItem">
-        <PhotoCamera className="sidebarIcon"/>
-        Gallery
+        <LocalHospital className="sidebarIcon"/>
+        Medical Info
         </li>
+        </button>
         </ul>
        
        </div>

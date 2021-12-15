@@ -4,23 +4,22 @@ import './styles/fees.css';
 
 const Fees=()=>{
     const Fees=[
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-        {Fees_Breakdown:"", Program:"", Amount_Due:""},
-    
-    ]
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                  {Fees_Breakdown:"", Program:"", Amount_Due:""},
+                ]
     const renderFees=(fees,index)=>{
       return(
         <tr key={index}> 
