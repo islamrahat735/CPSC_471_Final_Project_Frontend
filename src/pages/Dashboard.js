@@ -77,7 +77,6 @@ export default function Dashboard() {
         {isToggleAttendance && <Attendance />}
         {isToggleUpdates && <Updates />}
         {isToggleMedical && <MedicalRecords />}
-        {childID}
     </div>
     </div>
     </div>
