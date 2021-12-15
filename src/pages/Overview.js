@@ -23,8 +23,6 @@ export default function Overview()
         const rep = await response.json();
         console.log(rep);
         setChild(rep);
-
-    const feeresponse = await fetch(`http:/`)
   }
 
   return (
