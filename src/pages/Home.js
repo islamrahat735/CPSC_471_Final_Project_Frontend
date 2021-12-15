@@ -1,16 +1,39 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-function Home() {
-    return (
-        <div style = {{fontSize:30}}>
-        <div>
-            Welcome! Home Page.
-            <br />
+import {makeStyles} from '@material-ui/core/styles';
+import { CssBaseline } from '@mui/material';
+import './styles/home.css'
 
-        </div>
-
-        </div>
-    )
+const useStyles=makeStyles((theme)=>({
+appbar:{
+    fontFamily:'Nunito',
 }
 
-export default Home;
+
+    ,root:{
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    height:'95vh',
+   
+    backgroundImage:`url(${process.env.PUBLIC_URL+'/assests/pic.jpg'})`,
+    backgroundRepeat:"no-repeat",
+    backgroundSize: 'cover',
+},
+    colorText: {
+    color:'#000000',
+},
+}));
+export default function Home(){
+
+    const classes=useStyles();
+    return <div className={classes.root}>
+    <CssBaseline/>
+    <div>
+    <h1>
+    <span className={classes.colorText}>Welcome to this Daycare!</span>
+    </h1>
+    </div>
+    </div>;
+   
+}
