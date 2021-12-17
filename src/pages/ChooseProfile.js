@@ -50,7 +50,7 @@ export default function ChooseProfile() {
           :
           <div> 
                    <h1 style = {{textAlign: 'center', marginTop: 40}}>Pick which child you wish to view</h1>
-                  {child.map((child) =><button style={{width:300,height:150,marginLeft:780, marginTop:35, fontSize:30, backgroundColor:'lightblue'}} key={child.Child_Id} onClick = {() => saveID(child.Child_Id)}>{child.Fname} {child.Lname}</button>)}
+                  {child.map((child) =><button style={{width:300,height:150,marginLeft:735, marginTop:35, fontSize:30, backgroundColor:'lightblue'}} key={child.Child_Id} onClick = {() => saveID(child.Child_Id)}>{child.Fname} {child.Lname}</button>)}
           </div>
         }
 

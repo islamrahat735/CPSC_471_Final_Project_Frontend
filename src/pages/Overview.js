@@ -20,15 +20,21 @@ export default function Overview()
   async function fetchInfo()
   {
     const response = await fetch(`http://localhost:3001/api/child/${childID}`);
-        const rep = await response.json();
-        console.log(rep);
-        setChild(rep);
+      const rep = await response.json();
+      //console.log(rep);
+      setChild(rep);
+
+
+    const feeResponse = await fetch(`http://localhost:3001/api/program/${rep[0].Prog_name}`);
+    const feeRep = await feeResponse.json();
+    //console.log(feeRep)
+    setFees(feeRep);
   }
 
   return (
     <div>
       {child.map((child) =>
-      <div>
+      <div  key = {child.Fname}>
         <Card className="text-center">
           <Card.Header><h1>Overview</h1></Card.Header>
           <Card.Body>
@@ -44,6 +50,11 @@ export default function Overview()
             <Card.Text style = {{fontSize:30, paddingTop:75}}>
              Status: {child.status}
             </Card.Text>
+            {fees.map((fees) =>
+                        <Card.Text style = {{fontSize:30, paddingTop:75}} key = {fees.Fees}>
+                        Outstanding Fees: {fees.Fees}
+                       </Card.Text>
+            )}
           </Card.Body>
       </Card>   
       </div>
