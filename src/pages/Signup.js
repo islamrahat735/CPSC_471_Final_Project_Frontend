@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import { useHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import {usernameAC} from "../state/index"
+import { teacherIDAC } from '../state/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
@@ -14,6 +15,7 @@ export default function Signup() {
     var invalid = '';
     const dispatch = useDispatch();
     const {saveUsername} = bindActionCreators(usernameAC, dispatch);
+    //const {saveTeacherID} = bindActionCreators(teacherIDAC, dispatch);
     const name = useSelector((state) => state.username)
 
     const [isLoggedIn,setIsLoggedIn] = useState(false);
@@ -59,6 +61,7 @@ export default function Signup() {
                 }
                 if(rep[0].Access.toLowerCase() === 'teacher')
                 {
+                    //saveTeacherID()
                     history.push('/TeacherDashboard');
                 }
             }
