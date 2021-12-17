@@ -31,7 +31,7 @@ export default function TeacherDashboard() {
         const response = await fetch(`http://localhost:3001/api/teacher/username/${username}`);
         const rep= await response.json();
         console.log(rep);
-        saveTeacherID(rep[0].E_Id)
+        saveTeacherID(rep[0].E_ID)
     
     }
 

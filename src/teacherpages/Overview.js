@@ -34,13 +34,13 @@ return(
               Teacher Name: {teacher.Fname} {teacher.Lname}
              </Card.Text>
              <Card.Text style = {{fontSize:30, paddingTop:75}}>
-              Program Name: {teacher.Prog_name}
+              Phone Number: {teacher.Phone_num}
              </Card.Text>
              <Card.Text style = {{fontSize:30, paddingTop:75}}>
-              Date of Birth: {teacher.Dob}
+              Address: {teacher.Address}
              </Card.Text>
              <Card.Text style = {{fontSize:30, paddingTop:75}}>
-              Status: {teacher.status}
+              Medical ID #: {teacher.MR_Id}
              </Card.Text>
            </Card.Body>
        </Card>   
