@@ -1,5 +1,5 @@
 import "./styles/sidebar.css"
-import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera, LocalHospital } from "@material-ui/icons"
+import { ViewList, EmojiPeople, ControlPoint, Cached, PhotoCamera, LocalHospital, Call } from "@material-ui/icons"
 export default function Sidebar(props) {
     return (
         <div className="sidebar">
@@ -11,12 +11,6 @@ export default function Sidebar(props) {
         <li className="sidebarListItem">
         <ViewList className="sidebarIcon"/>
        Overview
-        </li>
-        </button>
-        <button onClick = {props.visibleHandleFees} id = "sidebarBtnF">
-        <li className="sidebarListItem">
-        <ControlPoint className="sidebarIcon"/>
-       Fees Details
         </li>
         </button>
         <button onClick = {props.visibleHandleAttendance} id = "sideBarBtnA">
@@ -35,6 +29,12 @@ export default function Sidebar(props) {
         <li className="sidebarListItem">
         <LocalHospital className="sidebarIcon"/>
         Medical Info
+        </li>
+        </button>
+        <button onClick = {props.visibleHandleContacts} id = "sidebarBtnF">
+        <li className="sidebarListItem">
+        <Call className="sidebarIcon"/>
+            Emergency Contacts
         </li>
         </button>
         </ul>
