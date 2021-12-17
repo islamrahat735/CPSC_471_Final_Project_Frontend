@@ -39,7 +39,11 @@ export default function StudentList() {
         fetch(`http://localhost:3001/api/child/${id}`, {
             method:'DELETE'
         })
-        .then(() => setNewStatus(true));
+        .then(() => setNewStatus(true))
+        .catch((error) => {
+            console.log("Hi")
+            console.error('Error:', error)
+          })
     }
 
     function displayMoreInfo(id)
