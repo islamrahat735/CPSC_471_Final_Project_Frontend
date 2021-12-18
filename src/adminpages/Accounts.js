@@ -1,17 +1,43 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import {useHistory} from 'react-router-dom'
+import {useEffect, useState} from 'react'
+import { Cancel } from '@material-ui/icons';
 import './Astyles/employeelist.css'
+import Row from 'react-bootstrap/Row'
+
 
 export default function Accounts() {
     const history = useHistory();
-    function enrollParent(){   
-        history.push("/Admin/EmployeeAdd")
+    const [accountList,setAccountList] = useState([]);
+    const [newStatus,setNewStatus] = useState(false);
+
+    useEffect(()=> {
+        fetchInfo();
+        setNewStatus(false);
+    }, [newStatus])
+
+    async function fetchInfo()
+    {
+        const response= await fetch(`http://localhost:3001/api/account/`);
+        const rep= await response.json();
+        setAccountList(rep);
     }
 
+    function deleteAccount(email)
+    {
+        fetch(`http://localhost:3001/api/account/${email}`,{
+            method:'DELETE'
+        })
+        .then(() => setNewStatus(true));
+        
+    }
+
+    function createAccountPage()
+    {
+        history.push('/AccountCreation');
+    }
     return (
         <div>
             <div  className = "emheader">
@@ -24,42 +50,28 @@ export default function Accounts() {
                 <Table striped bordered hover variant="primary">
                 <thead>
                     <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>ID</th>
-                    <th>Access</th>
+                    <th>Username</th>
                     <th>Password</th>
-                    <th></th>
+                    <th>Access</th>
+                    <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Mike</td>
-                    <td>Ross</td>
-                    <td>239101</td>
-                    <td>Teacher</td>
-                    <td>abcdefg</td>
-                    <td style ={{textAlign:'center'}}><Button variant="primary" size="sm">Edit </Button></td>
+                    {accountList.map((account) =>
+                    <tr key = {account.Username}>
+                        <td>{account.Username}</td>
+                        <td>{account.Password}</td>
+                        <td>{account.Access}</td>
+                        <td  style={{width:20}}><Button variant="danger" onClick = {() => deleteAccount(account.Username)}><Cancel /></Button>{' '}</td>
                     </tr>
-                    <tr>
-                    <td>Jill</td>
-                    <td>Johnson</td>
-                    <td>785276</td>
-                    <td>Admin</td>
-                    <td>gfdrt4da</td>
-                    <td style ={{textAlign:'center'}}><Button variant="primary" size="sm">Edit </Button></td>
-                    </tr>
-                    <tr>
-                    <td>Jane</td>
-                    <td>Doe</td>
-                    <td>234567</td>
-                    <td>Parent</td>
-                    <td>343ffh3sd</td>
-                    <td style ={{textAlign:'center'}}><Button variant="primary" size="sm">Edit </Button></td>
-                    </tr>
+                    )}
+
                 </tbody>
                 </Table>
             </div>
+            <Row>
+            <Button style = {{marginLeft:190, marginTop:50}}variant="primary" size="lg" onClick ={()=>createAccountPage()}> Create Account </Button>
+            </Row>
         </div>
     )
 }

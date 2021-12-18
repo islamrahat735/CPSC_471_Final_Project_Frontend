@@ -15,6 +15,7 @@ import FieldTripCreator from './adminpages/FieldTripCreator'
 import EmployeeEnroll from './adminpages/EmployeeEnroll';
 import FetchPrac from './fetchPrac';
 import DisplayChildInfo from './adminpages/DisplayChildInfo';
+import AccountCreation from './adminpages/AccountCreation';
 function App() {
 
   return (
@@ -72,6 +73,10 @@ function App() {
 
       <Route path = "/moreInfo" exact>
         <DisplayChildInfo />
+      </Route>
+
+      <Route path = "/AccountCreation" exact>
+        <AccountCreation />
       </Route>
   
    </Switch>

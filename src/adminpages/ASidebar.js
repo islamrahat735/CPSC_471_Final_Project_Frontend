@@ -40,7 +40,7 @@ export default function Sidebar(props) {
         <button onClick = {props.Employeelisthandler} id = "sidebarBtnO">
         <li className="sidebarListItem">
         <ViewList className="sidebarIcon"/>
-       Employees
+       Teachers
         </li>
         </button>
         </ul>

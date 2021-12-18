@@ -4,17 +4,46 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import {useHistory} from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import './Astyles/employeelist.css'
+import { Cancel } from '@material-ui/icons';
+
 export default function EmployeeList() {
     const history = useHistory();
-    function enrollParent(){   
+    const [teacherList,setTeacherList] = useState([]);
+    const [newStatus, setNewStatus] = useState(false);
+    function enrollTeacher(){   
         history.push("/Admin/EmployeeAdd")
+    }
+
+    useEffect(()=> {
+        fetchInfo();
+        setNewStatus(false);
+    }, [newStatus])
+
+    async function fetchInfo()
+    {
+        const response = await fetch(`http://localhost:3001/api/teacher/full`);
+        const rep = await response.json();
+        setTeacherList(rep);
+    }
+
+    function deleteTeacher(eid)
+    {
+        fetch(`http://localhost:3001/api/employee/${eid}`, {
+            method:'DELETE'
+        })
+        .then(() => setNewStatus(true))
+        .catch((error) => {
+            console.log("Hi")
+            console.error('Error:', error)
+          })
     }
 
     return (
         <div>
             <div  className = "emheader">
-                <h1>List of Employees</h1>
+                <h1>List of Teachers</h1>
             </div>
             <br></br>
             <br></br>
@@ -23,35 +52,34 @@ export default function EmployeeList() {
                 <Table striped bordered hover variant="primary">
                 <thead>
                     <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>ID</th>
-                    <th>Role</th>
-                    <th></th>
+                    <th>Employee ID</th>
+                    <th>Username</th>
+                    <th>Fname</th>
+                    <th>Lname</th>
+                    <th>Phone #</th>
+                    <th>Address</th>
+                    <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {teacherList.map((teacher) => 
                     <tr>
-                    <td>Mike</td>
-                    <td>Ross</td>
-                    <td>239101</td>
-                    <td>Teacher</td>
-                    <td style ={{textAlign:'center'}}><Button variant="primary" size="sm">Edit </Button></td>
+                        <td>{teacher.E_Id}</td>
+                        <td>{teacher.Username}</td>
+                        <td>{teacher.Fname}</td>
+                        <td>{teacher.Lname}</td>
+                        <td>{teacher.Phone_num}</td>
+                        <td>{teacher.Address}</td>
+                        <td><Button variant="danger" onClick={()=>deleteTeacher(teacher.E_Id)}><Cancel /></Button>{' '}</td>
                     </tr>
+                    )}  
                 </tbody>
                 </Table>
             </div>
                     <div className = "addEmpBtn">
                         <Row>
-                            <Button variant="primary" size="lg" onClick = {enrollParent}>
+                            <Button variant="primary" size="lg" onClick = {enrollTeacher}>
                                 Add Employee
-                            </Button>
-                        </Row>
-                    </div>
-                    <div className = "removeEmpBtn">
-                        <Row>
-                            <Button variant="secondary" size="lg">
-                                Remove Employee
                             </Button>
                         </Row>
                     </div>

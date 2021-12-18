@@ -25,6 +25,7 @@ export default function StudentList() {
 
     useEffect(() => {
         fetchInfo();
+        setNewStatus(false);
     },[newStatus])
 
     async function fetchInfo()
