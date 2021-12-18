@@ -55,19 +55,21 @@ export default function CourseList() {
                     Classes
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    {classes.map((course) => <Dropdown.Item as="button" onClick={() =>{ fetchClasslist(course.C_Id)}}>{course.Class_name +", " + course.C_Id}</Dropdown.Item>
+                    {classes.map((course) => <Dropdown.Item as="button" onClick={() =>{ 
+                        setChosenClass(course);
+                        fetchClasslist(course.C_Id)}}>{course.Class_name +", " + course.C_Id}</Dropdown.Item>
                     )} 
                 </Dropdown.Menu>
-                <input style={{fontSize:17, marginLeft:30}}placeholder='Enter Date YYYY-MM-DD' onChange={saveDate}></input>
-                <Button variant="success">Success</Button>{' '}
+                {/* <input style={{fontSize:17, marginLeft:30}}placeholder='Enter Date YYYY-MM-DD' onChange={saveDate}></input>
+                <Button variant="success">Success</Button>{' '} */}
 
 
                 
             </Dropdown>
             </Row>
 
-            <h4>You Chose: Math</h4>
-
+            <h4>You Chose: {chosenClass.Class_name}</h4>
+            <h4>Today's Date Is: {test1}</h4>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -75,6 +77,7 @@ export default function CourseList() {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Present</th>
+                    <th>Absent</th>
                     
                     </tr>
                 </thead>
@@ -83,6 +86,7 @@ export default function CourseList() {
                                                     <td>{student.Child_Id}</td>
                                                     <td>{student.Fname}</td>
                                                     <td>{student.Lname}</td>
+                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log(test1)}/></td>
                                                     <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log(test1)}/></td>
                                                 </tr>)}
                 </tbody>
