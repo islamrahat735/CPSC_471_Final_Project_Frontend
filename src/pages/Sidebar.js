@@ -19,12 +19,6 @@ export default function Sidebar(props) {
         Attendance
         </li>
         </button>
-        <button onClick = {props.visibleHandleUpdate} id = "sideBarBtnU">
-        <li className="sidebarListItem">
-        <Cached className="sidebarIcon"/>
-        Updates
-        </li>
-        </button>
         <button onClick = {props.visibleHandleMedical} id = "sideBarBtnMed">
         <li className="sidebarListItem">
         <LocalHospital className="sidebarIcon"/>

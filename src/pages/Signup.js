@@ -88,20 +88,9 @@ export default function Signup() {
   <div className="column"> {/**THIS IS Right SIDE OF PAGE */}
 
     <h1 className = "greetingText">Great to see you again!</h1>
-    <h1 className = "greetingText">Login as:</h1>
 
-    <table>  {/**THIS IS FOR THE ADMIN AND PARENT BUTTONS */}
-        <tr>
-            <td>
-            <button className = "adminbtn" style = {{fontSize:30, marginTop:40}}>Admin</button>
-            </td>
-            <td>
-            <button className = "parentbtn" style = {{fontSize:30, marginTop:40}}>Parent</button>
-            </td>
-        </tr>
-    </table>
         
-   <form> {/**THIS IS FOR THE INPUTS OF USERNAME/EMAIL AND PASSWORD */}
+   <form > {/**THIS IS FOR THE INPUTS OF USERNAME/EMAIL AND PASSWORD */}
        <div className = "Inputmail">
        {isLoggedIn && <InvalidLogin />}
        <label style = {{fontFamily: 'Roboto', fontSize:26}}>Email</label>
@@ -112,11 +101,9 @@ export default function Signup() {
        <label style = {{fontFamily: 'Roboto', fontSize:26}}>Password</label>
        <input type = "password" className = "form-control" placeholder= "Enter password" style = {{width:400, height:50, fontSize:22}} onChange= {savePass} id = "pass"></input>
        </div>
-       <button type="button" class="btn btn-primary btn-lg btn-block" style = {{width:400, height:50, fontSize:22, marginLeft:300, marginTop:32, fontFamily: 'Roboto', backgroundColor:'#639FE4'}} onClick = {fetchAccount}>Login</button>
+       <button type="button" class="btn btn-primary btn-lg btn-block" style = {{width:400, height:50, fontSize:22, marginLeft:290, marginTop:32, fontFamily: 'Roboto', backgroundColor:'#639FE4'}} onClick = {fetchAccount}>Login</button>
         <br></br>
         <br></br>
-       <small style = {{marginLeft:300}}><a href = "">Forgot password?</a></small>
-       <small style = {{marginLeft:40}}>Want to register your child? <a href = "">Click Here</a></small>
    </form>
     <div>
     </div>

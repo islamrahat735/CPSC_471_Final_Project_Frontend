@@ -19,6 +19,7 @@ import AccountCreation from './adminpages/AccountCreation';
 import NewClass from './adminpages/NewClass';
 import CreateParent from './adminpages/CreateParent';
 import AddEmergencyContact from './pages/AddEmergencyContact';
+import AddContactTeacher from './teacherpages/AddContactTeacher'
 function App() {
 
   return (
@@ -93,6 +94,10 @@ function App() {
             
       <Route path = "/CreateContact" exact>
         <AddEmergencyContact />
+      </Route>
+
+      <Route path = "/CreateTeacherContact" exact>
+        <AddContactTeacher />
       </Route>
   
    </Switch>

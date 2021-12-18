@@ -79,7 +79,6 @@ export default function Dashboard() {
         {isToggleOver && <Overview />}
         {isToggleContacts && <EmergencyContacts />}
         {isToggleAttendance && <Attendance />}
-        {isToggleUpdates && <Updates />}
         {isToggleMedical && <MedicalRecords />}
     </div>
     </div>

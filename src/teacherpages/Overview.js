@@ -34,6 +34,9 @@ return(
               Teacher Name: {teacher.Fname} {teacher.Lname}
              </Card.Text>
              <Card.Text style = {{fontSize:30, paddingTop:75}}>
+              Teacher ID: {teacherID}
+             </Card.Text>
+             <Card.Text style = {{fontSize:30, paddingTop:75}}>
               Phone Number: {teacher.Phone_num}
              </Card.Text>
              <Card.Text style = {{fontSize:30, paddingTop:75}}>

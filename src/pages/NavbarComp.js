@@ -4,8 +4,8 @@ import {Navbar, Nav, NavDropdown, Form, Container} from 'react-bootstrap'
 function NavbarComp() {
     return (
         <div>
-              <Navbar bg="dark" variant="dark">
-    <Container>
+    <Navbar bg="dark" variant="dark">
+    <Container style = {{marginLeft:0}}>
     <Navbar.Brand href="/">Happy Trails Daycare</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>

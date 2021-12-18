@@ -31,12 +31,6 @@ export default function Sidebar(props) {
             Classes
         </li>
         </button>
-        <button onClick = {props.Fieldtriphandler} id = "sideBarBtnU">
-        <li className="sidebarListItem">
-        <Cached className="sidebarIcon"/>
-        Field Trips
-        </li>
-        </button>
         <button onClick = {props.AccountsHandler} id = "sideBarBtnU">
         <li className="sidebarListItem">
         <Cached className="sidebarIcon"/>
