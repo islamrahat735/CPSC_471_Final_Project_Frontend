@@ -29,6 +29,10 @@ export default function ParentList() {
         setParentList(rep);
     }
 
+    function createParent()
+    {
+        history.push('/CreateParent')
+    }
 
     return (
         <div style = {{marginTop:30}}>
@@ -62,6 +66,11 @@ export default function ParentList() {
                 </tbody>
                 </Table>
             </div>
+            <Row style={{marginLeft:280, marginTop:100}}>
+            <Button variant="primary" size="lg" onClick = {() => createParent()}>
+                Create Parent
+            </Button>
+            </Row>  
         </div>
     )
 }

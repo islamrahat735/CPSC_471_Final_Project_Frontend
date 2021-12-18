@@ -9,6 +9,8 @@ import FieldTrip from './FieldTrip';
 import EmployeeList from './EmployeeList';
 import Accounts from './Accounts';
 import { useEffect } from 'react';
+import Classes from './Classes'
+import ContactTrace from './ContactTrace';
 export default function AdminDashboard() {
     const [isToggledParent, setisToggleParent] = useState(false);
     const [isToggledStudent, setisToggleStudent] = useState(false);
@@ -16,6 +18,8 @@ export default function AdminDashboard() {
     const [isToggledFieldTrips, setisToggleFieldTrips] = useState(false);
     const [isToggledEmployees, setisToggleEmployees] = useState(false);
     const [isToggledAccounts, setisToggleAccounts] = useState(false);
+    const [isToggledClasses, setIsToggledClasses] = useState(false);
+    const [isToggleContactTrace, setIsToggleContactTrace] = useState(false);
 
     function visibleParentList()
     {
@@ -24,6 +28,8 @@ export default function AdminDashboard() {
         setisTogglePrograms(false);
         setisToggleEmployees(false);
         setisToggleFieldTrips(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(false);
         setisToggleParent(true);
     }
 
@@ -34,6 +40,8 @@ export default function AdminDashboard() {
         setisToggleEmployees(false);
         setisToggleFieldTrips(false);
         setisToggleParent(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(false)
         setisToggleStudent(true);
     }
 
@@ -43,6 +51,8 @@ export default function AdminDashboard() {
         setisToggleEmployees(false);
         setisToggleFieldTrips(false);
         setisToggleParent(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(false)
         setisToggleStudent(false);
         setisTogglePrograms(true);
     }
@@ -53,6 +63,8 @@ export default function AdminDashboard() {
         setisToggleEmployees(false);
         setisToggleParent(false);
         setisToggleStudent(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(false)
         setisTogglePrograms(false);
         setisToggleFieldTrips(true);
     }
@@ -62,6 +74,8 @@ export default function AdminDashboard() {
         setisToggleAccounts(false);
         setisToggleParent(false);
         setisToggleStudent(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(false)
         setisTogglePrograms(false);
         setisToggleFieldTrips(false);
         setisToggleEmployees(true);
@@ -73,8 +87,34 @@ export default function AdminDashboard() {
         setisToggleStudent(false);
         setisTogglePrograms(false);
         setisToggleFieldTrips(false);
+        setIsToggleContactTrace(false)
+        setIsToggledClasses(false);
         setisToggleEmployees(false);
         setisToggleAccounts(true);
+    }
+
+    function visibleClasses()
+    {
+        setisToggleParent(false);
+        setisToggleStudent(false);
+        setisTogglePrograms(false);
+        setIsToggleContactTrace(false)
+        setisToggleFieldTrips(false);
+        setisToggleEmployees(false);
+        setisToggleAccounts(false);
+        setIsToggledClasses(true);
+    }
+
+    function visibleContactTrace()
+    {
+        setisToggleParent(false);
+        setisToggleStudent(false);
+        setisTogglePrograms(false);
+        setisToggleFieldTrips(false);
+        setisToggleEmployees(false);
+        setisToggleAccounts(false);
+        setIsToggledClasses(false);
+        setIsToggleContactTrace(true)
     }
 
     return (
@@ -82,7 +122,7 @@ export default function AdminDashboard() {
     <ATopbar/>
     <div className = "container">
     <ASidebar Parentlisthandler = {visibleParentList} Studentlisthandler = {visibleStudentList} Programlisthandler = {visiblePrograms} Fieldtriphandler = {visibleFieldTrips}
-    Employeelisthandler = {visibleEmployees} AccountsHandler = {visiibleAccounts}/>
+    Employeelisthandler = {visibleEmployees} AccountsHandler = {visiibleAccounts} ClassesHandler = {visibleClasses} ContactTraceHandler = {visibleContactTrace}/>
     <div className = "others">
         {isToggledParent && <ParentList />}
         {isToggledStudent && <StudentList />}
@@ -90,6 +130,8 @@ export default function AdminDashboard() {
         {isToggledFieldTrips && <FieldTrip />}
         {isToggledEmployees && <EmployeeList />}
         {isToggledAccounts && <Accounts />}
+        {isToggledClasses && <Classes />}
+        {isToggleContactTrace && <ContactTrace />}
     </div>
     </div>
     </div>

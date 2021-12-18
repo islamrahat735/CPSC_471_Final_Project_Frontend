@@ -25,6 +25,12 @@ export default function Sidebar(props) {
         Programs
         </li>
         </button>
+        <button onClick = {props.ClassesHandler} id = "sideBarBtnA">
+        <li className="sidebarListItem">
+        <EmojiPeople className="sidebarIcon"/>
+            Classes
+        </li>
+        </button>
         <button onClick = {props.Fieldtriphandler} id = "sideBarBtnU">
         <li className="sidebarListItem">
         <Cached className="sidebarIcon"/>
@@ -41,6 +47,12 @@ export default function Sidebar(props) {
         <li className="sidebarListItem">
         <ViewList className="sidebarIcon"/>
        Teachers
+        </li>
+        </button>
+        <button onClick = {props.ContactTraceHandler} id = "sidebarBtnO">
+        <li className="sidebarListItem">
+        <ViewList className="sidebarIcon"/>
+       Contact Trace
         </li>
         </button>
         </ul>

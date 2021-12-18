@@ -79,7 +79,7 @@ export default function EmployeeList() {
                     <div className = "addEmpBtn">
                         <Row>
                             <Button variant="primary" size="lg" onClick = {enrollTeacher}>
-                                Add Employee
+                                Create Employee
                             </Button>
                         </Row>
                     </div>

@@ -4,12 +4,13 @@ import {useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { Cancel } from '@material-ui/icons';
+import {useHistory} from 'react-router-dom'
 
 export default function EmergencyContacts() {
 
   const childID = useSelector((state) => state.childID);
   const [contact, setContact] = useState([]);
-
+  const history = useHistory();
   const [newStatus, setNewStatus] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,11 @@ export default function EmergencyContacts() {
     })
     .then(() => setNewStatus(true));
   }
+
+  function addContact()
+  {
+    history.push('/CreateContact');
+  }
   return (
     <div style = {{marginTop:30}}>
       <Table striped bordered style = {{borderColor:'black'}}>
@@ -57,6 +63,10 @@ export default function EmergencyContacts() {
         )}
         </tbody>
       </Table>
+      
+      <div style={{marginTop:50,marginLeft:500}}>
+      <Button size='lg' onClick={() => addContact()}>Add Emergency Contact</Button>
+      </div>
     </div>
   )
 }
