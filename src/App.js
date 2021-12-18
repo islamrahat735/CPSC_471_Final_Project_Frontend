@@ -15,6 +15,10 @@ import FieldTripCreator from './adminpages/FieldTripCreator'
 import EmployeeEnroll from './adminpages/EmployeeEnroll';
 import FetchPrac from './fetchPrac';
 import DisplayChildInfo from './adminpages/DisplayChildInfo';
+import AccountCreation from './adminpages/AccountCreation';
+import NewClass from './adminpages/NewClass';
+import CreateParent from './adminpages/CreateParent';
+import AddEmergencyContact from './pages/AddEmergencyContact';
 function App() {
 
   return (
@@ -72,6 +76,23 @@ function App() {
 
       <Route path = "/moreInfo" exact>
         <DisplayChildInfo />
+      </Route>
+
+      <Route path = "/AccountCreation" exact>
+        <AccountCreation />
+      </Route>
+
+      <Route path = "/CreateClass" exact>
+        <NewClass />
+      </Route>
+      
+      <Route path = "/CreateParent" exact>
+        <CreateParent />
+      </Route>
+
+            
+      <Route path = "/CreateContact" exact>
+        <AddEmergencyContact />
       </Route>
   
    </Switch>

@@ -6,6 +6,7 @@ import ATopbar from "./ATopbar"
 import { Button } from 'react-bootstrap';
 import {useHistory } from 'react-router-dom';
 import {Card} from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 export default function DisplayChildInfo() {
     const childID = useSelector((state) => state.childID);
@@ -17,6 +18,8 @@ export default function DisplayChildInfo() {
     const [healthCondInfo, setHealthCondInfo] = useState([]); //Stores conditions
     const [allergyInfo, setAllergyInfo] = useState([]); //stores allergies
     const [vaccineInfo, setVaccineInfo] = useState([]); //stores vaccines
+    const [attendanceInfo, setAttendanceInfo] = useState([]);
+    const [currentCovidStatus,setCurrentCovidStatus] = useState([]);
 
     const history = useHistory();
 
@@ -33,6 +36,8 @@ export default function DisplayChildInfo() {
         const medRecResponse = await fetch(`http://localhost:3001/api/medicalRecord/${mrIDRep[0].MR_Id}`);
         const medRep = await medRecResponse.json();
         setMedicalRecord(medRep);
+        setCurrentCovidStatus(medRep[0].Covid_Status);
+        console.log(medRep[0].Covid_Status);
 
         const programResponse = await fetch(`http://localhost:3001/api/program/${mrIDRep[0].Prog_name}`);
         const programRep = await programResponse.json();
@@ -58,11 +63,63 @@ export default function DisplayChildInfo() {
         const vaccineRep = await vaccineResponse.json();
         setVaccineInfo(vaccineRep);
 
+        const attendanceResponse = await fetch(`http://localhost:3001/api/childAttendsClass/${childID}`);
+        const attendanceRep = await attendanceResponse.json();
+        setAttendanceInfo(attendanceRep);
+
     }
 
     function goToAdminPage()
     {
         history.push('/AdminDashboard')
+    }
+
+    function setPos()
+    {
+        let newStat = 
+        {
+            mrid:medicalRecord[0].MR_Id,
+            covidStatus:"positive"
+        }
+        console.log(newStat);
+        setCurrentCovidStatus('Positive')
+        fetch(`http://localhost:3001/api/medicalRecord/`, {
+            method:'PUT',
+            headers: {"Content-Type": "application/json"},
+            body:JSON.stringify(newStat)
+        })
+    }
+    
+    function setNeg()
+    {
+        let newStat = 
+        {
+            mrid:medicalRecord[0].MR_Id,
+            covidStatus:"negative"
+        }
+        console.log(newStat);
+        setCurrentCovidStatus('Negative')
+        fetch(`http://localhost:3001/api/medicalRecord/`, {
+            method:'PUT',
+            headers: {"Content-Type": "application/json"},
+            body:JSON.stringify(newStat)
+        })
+    }
+
+    function setIsolation()
+    {
+        let newStat = 
+        {
+            mrid:medicalRecord[0].MR_Id,
+            covidStatus:"isolation"
+        }
+        console.log(newStat);
+        setCurrentCovidStatus('Isolated')
+        fetch(`http://localhost:3001/api/medicalRecord/`, {
+            method:'PUT',
+            headers: {"Content-Type": "application/json"},
+            body:JSON.stringify(newStat)
+        })
     }
 
     return (
@@ -114,8 +171,11 @@ export default function DisplayChildInfo() {
                     <Card.Body>
                         {medicalRecord.map((med) =>
                         <div style={{textAlign:'center'}} key = {med.MR_Id}>
+                        <Button onClick = {()=>setPos()}>Set Positive</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Button onClick = {()=>setNeg()}>Set Negative</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Button onClick = {()=>setIsolation()}>Set Isolation</Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <Card.Text>Mr_Id: {med.MR_Id}</Card.Text>
-                        <Card.Text>Covid Status: {med.Covid_Status}</Card.Text>
+                        <Card.Text>Covid Status: {currentCovidStatus}</Card.Text>
                         <br></br>
                         <Card.Text style = {{fontWeight:'bold', textDecoration:'underline'}}>Allergies</Card.Text>
                             {allergyInfo.map((allergy)=>
@@ -143,6 +203,17 @@ export default function DisplayChildInfo() {
                         <div key = {emerg.Pno} style = {{textAlign:'center'}}>
                             <Card.Text>Phone Number: {emerg.Pno}</Card.Text>
                             <Card.Text>Relation: {emerg.Relation}</Card.Text>
+                        </div>
+                        )}
+                    </Card.Body>
+                </Card>
+                <br></br>
+                <Card>
+                    <Card.Header style={{textAlign:'center', fontWeight:'bold'}}>Attendance Records (Days Present) </Card.Header>
+                    <Card.Body>
+                        {attendanceInfo.map((attend) =>
+                        <div  key = {attend.Child_Id} style = {{textAlign:'center'}}>
+                            <Card.Text>Date: {attend.Date} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class Name: {attend.Class_name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class ID: {attend.C_Id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Program Name: {attend.Prog_name} </Card.Text>
                         </div>
                         )}
                     </Card.Body>

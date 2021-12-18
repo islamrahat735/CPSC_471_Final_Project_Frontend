@@ -133,7 +133,7 @@ export default function ChildEnroll() {
   <Row>
   <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Date Of Birth</Form.Label>
-      <Form.Control  placeholder="YYYY/MM/DD" onChange={saveDOB}/>
+      <Form.Control  placeholder="YYYY-MM-DD" onChange={saveDOB}/>
     </Form.Group>
   <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Program</Form.Label>
