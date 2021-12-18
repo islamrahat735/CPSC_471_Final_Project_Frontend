@@ -7,13 +7,17 @@ import {useSelector} from 'react-redux';
 import InputGroup from 'react-bootstrap/InputGroup'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 export default function CourseList() {
     
     const teacherID=useSelector((state)=>state.teacherID);
     const [classes, setClasses] = useState([])
     const [classList, setClasslist] = useState([])
+    const [chosenClass, setChosenClass] = useState('')
     var date = '';
+    let test = new Date;
+    const test1 = test.toISOString().substring(0,10);
 
     useEffect(() => {
         fetchClasses()
@@ -22,6 +26,8 @@ export default function CourseList() {
     async function fetchClasses(){
         const response= await fetch(`http://localhost:3001/api/class/teacher/${teacherID}`);
         const rep= await response.json();
+
+        
         console.log(rep);
         setClasses(rep);
     }
@@ -29,7 +35,11 @@ export default function CourseList() {
     async function fetchClasslist(id){
         const response = await fetch(`http://localhost:3001/api/class/students/${id}`);
         const rep = await response.json();
-        setClasslist(rep);
+        const result = rep.map((student) => {
+            student.isPresent = false;
+            return student;
+        })
+        setClasslist(result);
     }
 
     function saveDate(val)
@@ -49,6 +59,8 @@ export default function CourseList() {
                     )} 
                 </Dropdown.Menu>
                 <input style={{fontSize:17, marginLeft:30}}placeholder='Enter Date YYYY-MM-DD' onChange={saveDate}></input>
+                <Button variant="success">Success</Button>{' '}
+
 
                 
             </Dropdown>
@@ -63,7 +75,7 @@ export default function CourseList() {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Present</th>
-                    <th>Absent</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -71,15 +83,14 @@ export default function CourseList() {
                                                     <td>{student.Child_Id}</td>
                                                     <td>{student.Fname}</td>
                                                     <td>{student.Lname}</td>
-                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log("Present")}/></td>
-                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log("Absent")}/></td>
+                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log(test1)}/></td>
                                                 </tr>)}
                 </tbody>
             </Table>
 
         </div>
 
-    
+                        
         
         
     )
