@@ -17,10 +17,11 @@ export default function CourseList() {
     const [chosenClass, setChosenClass] = useState('')
     var date = '';
     let test = new Date;
-    const test1 = test.toISOString().substring(0,10);
+    const [currentDate, setCurrentDate] = useState((new Date ).toISOString().substring(0,10));
 
     useEffect(() => {
         fetchClasses()
+        setCurrentDate((new Date ).toISOString().substring(0,10))
     }, [])
 
     async function fetchClasses(){
@@ -40,6 +41,31 @@ export default function CourseList() {
             return student;
         })
         setClasslist(result);
+    }
+
+    
+    function markPresent(childId){
+        const attendanceInfo = {
+            chId : childId,
+            cId : chosenClass.C_Id,
+            date : currentDate
+        }
+        
+        fetch(`http://localhost:3001/api/childAttendsClass/`, { //make employee
+        method: 'POST',
+        headers: {"Content-Type": "application/json"},
+        body:JSON.stringify(attendanceInfo)
+      })
+    }
+
+    function markAbsent(childId){
+        fetch(`http://localhost:3001/api/childAttendsClass/${childId}/${chosenClass.C_Id}/${currentDate}`, {
+            method:'DELETE'
+        })
+        .catch((error) => {
+            console.log("Hi")
+            console.error('Error:', error)
+          })
     }
 
     function saveDate(val)
@@ -69,7 +95,7 @@ export default function CourseList() {
             </Row>
 
             <h4>You Chose: {chosenClass.Class_name}</h4>
-            <h4>Today's Date Is: {test1}</h4>
+            <h4>Today's Date Is: {currentDate}</h4>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -86,8 +112,8 @@ export default function CourseList() {
                                                     <td>{student.Child_Id}</td>
                                                     <td>{student.Fname}</td>
                                                     <td>{student.Lname}</td>
-                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log(test1)}/></td>
-                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => console.log(test1)}/></td>
+                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => markPresent(student.Child_Id)}/></td>
+                                                    <td style={{width:15}}><InputGroup.Checkbox aria-label="Checkbox for following text input" onClick = {() => markAbsent(student.Child_Id)}/></td>
                                                 </tr>)}
                 </tbody>
             </Table>
