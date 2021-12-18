@@ -4,7 +4,7 @@ import TSidebar from './TSidebar';
 import TTopbar from './TTopbar';
 import Overview from './Overview';
 import MedicalRecords from './MedicalRecords';
-import FieldTrip from './FieldTrip';
+import EmergContact from './TeacherEmergContact';
 import CourseList from './CourseList';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -77,7 +77,7 @@ export default function TeacherDashboard() {
         {isToggledOverview && <Overview />}
         {isToggledCourseList && <CourseList />}
         {isToggledMedRecord && <MedicalRecords />}
-        {isToggledFieldTrips && <FieldTrip />}
+        {isToggledFieldTrips && <EmergContact />}
     </div>
     </div>
     </div>

@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import './Astyles/EmployeeAccInfo.css'
+import {useHistory} from 'react-router-dom'
 export default function EmployeeEnroll() {
   var fname = '';
   var lname = '';
@@ -11,6 +12,7 @@ export default function EmployeeEnroll() {
   var address = '';
   var user = '';
 
+  const history = useHistory();
   
   function saveFname(val)
   {
@@ -39,18 +41,28 @@ export default function EmployeeEnroll() {
 
   function createTeacher(user)
   {
-    let employeeInfo = {
-      Address: address,
-      Fname: fname,
-      Lname: lname,
-      Phone_num: phone, 
-      MR_Id:null
+    let newRecord = 
+    {
+      covidStatus:"negative"
     }
-    console.log(employeeInfo);
-    fetch(`http://localhost:3001/api/employee/`, { //make employee
+    fetch(`http://localhost:3001/api/medicalRecord`, {
+      method:'POST',
+      headers: {"Content-Type": "application/json"},
+      body:JSON.stringify(newRecord)
+    })
+    .then(response => response.json())
+    .then(data => {
+      let newEmp = {
+        Address:address,
+        Fname:fname,
+        Lname:lname,
+        Phone_num:phone,
+        MR_Id:data[0].MR_Id
+      }
+      fetch(`http://localhost:3001/api/employee/`, { //make employee
       method: 'POST',
       headers: {"Content-Type": "application/json"},
-      body:JSON.stringify(employeeInfo)
+      body:JSON.stringify(newEmp)
     })
       .then(response => response.json())
       .then(data => {
@@ -76,8 +88,19 @@ export default function EmployeeEnroll() {
       .catch((error) => {
         console.error('Error:', error);
       })
+    })
 
+    // let employeeInfo = {
+    //   Address: address,
+    //   Fname: fname,
+    //   Lname: lname,
+    //   Phone_num: phone, 
+    //   MR_Id:null
+    // }
+    // console.log(employeeInfo);
+    
 
+    history.push('/AdminDashboard')
   }
 
     return (

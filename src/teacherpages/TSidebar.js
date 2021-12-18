@@ -29,7 +29,7 @@ export default function TSidebar(props) {
         <button onClick = {props.FieldTripHandle} id = "sideBarBtnA">
         <li className="sidebarListItem">
         <EmojiPeople className="sidebarIcon"/>
-        Field Trips
+        Emergency Contacts
         </li>
         </button>
 

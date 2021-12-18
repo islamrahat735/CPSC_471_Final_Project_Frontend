@@ -5,6 +5,7 @@ import {Table} from 'react-bootstrap'
 import {useState} from 'react'
 import { Cancel } from '@material-ui/icons';
 import {CheckBox} from '@material-ui/icons';
+import { useEffect } from 'react'
 
 export default function ContactTrace() {
     var chID = '';
@@ -12,6 +13,11 @@ export default function ContactTrace() {
     var cid = '';
     const history = useHistory();
     const [info,setInfo] = useState([]);
+    const [newStatus,setNewStatus] = useState(false);
+
+    useEffect(() => {
+        setNewStatus(false);
+    }, [info])
 
     function saveChID(val)
     {
@@ -32,15 +38,54 @@ export default function ContactTrace() {
     {
         let traceInfo = 
         {
-            chID:chID,
             date:date,
             cid:cid
         }
         console.log(traceInfo);
-        const response = await fetch(`http://localhost:3001/api/childAttendsClass/contactTrace/${chID}/${cid}/${date}`);
+        const response = await fetch(`http://localhost:3001/api/childAttendsClass/contactTrace/${cid}/${date}`);
         const rep = await response.json();
         setInfo(rep);
+        console.log(rep)
 
+    }
+
+    function setIsolation(mrid)
+    {
+        let medInfo = 
+        {
+            mrid:mrid,
+            covidStatus:"isolation"
+        }
+
+        console.log(medInfo);
+        fetch(`http://localhost:3001/api/medicalRecord/`, {
+            method:'PUT',
+            headers: {"Content-Type": "application/json"},
+            body:JSON.stringify(medInfo)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        // const test = info.map((info) => {
+        //     if(info.MR_Id != mrid)
+        //     {
+        //         return info;
+        //     }
+        // })
+        // console.log(test);
+        let infoLength = info.length;
+        let tempArr = [];
+        for(var i = 0; i < infoLength;i++)
+        {
+            if(info[i].MR_Id !== mrid)
+            {
+                tempArr.push(info[i]);
+            }
+        }
+
+        setInfo(tempArr);
+        
     }
 
     return (
@@ -49,10 +94,6 @@ export default function ContactTrace() {
             <div style={{marginLeft:400, marginTop:50}}>
             <Form>
              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>Child ID</Form.Label>
-                <Form.Control type="email" placeholder="Enter Child ID" onChange={saveChID}/>
-                </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Date</Form.Label>
@@ -83,7 +124,7 @@ export default function ContactTrace() {
                         <td>{info.Child_Id}</td>
                         <td>{info.Fname}</td>
                         <td>{info.Lname}</td>
-                        <td style = {{textAlign:'center'}}><Button variant="primary"><CheckBox /></Button>{' '}</td>
+                        <td style = {{textAlign:'center'}}><Button variant="primary" onClick = {()=> setIsolation(info.MR_Id)}><CheckBox /></Button>{' '}</td>
                     </tr>
                     )}
                 </tbody>
